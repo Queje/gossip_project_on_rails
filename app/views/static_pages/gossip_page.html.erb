@@ -1,0 +1,10 @@
+<h5> potin numéro <%= @gossip %>: </h5> </br>
+<h6> <%=@gossip_id.title %> </h6> </br>
+<h7> l'auteur est: <%= link_to "#{@gossip_id.user.first_name}", author_path(@gossip)%></7>
+<p> <%=@gossip_id.created_at %> </p> </br>
+<p><U>Contenu du potin:</U> </p> </br>
+<p> <%=@gossip_id.content %> </p> </br>
+
+
+
+
