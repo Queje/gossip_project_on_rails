@@ -29,7 +29,7 @@ puts "10 tags créés"
 
 tp Tag.all
 
-20.times do
+30.times do
     user_list = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 5), email: Faker::Internet.email, age: rand(10..99), city: City.all.sample)
 end
 
@@ -41,11 +41,11 @@ tp User.all
     gossip_list = Gossip.create(title: Faker::ChuckNorris.fact, content: Faker::Lorem.sentence(word_count: 20), user: User.all.sample, tag: Tag.all.sample)
 end
 
-puts "10 gossips"
+puts "30 gossips"
 
 tp Gossip.all
 
-3.times do
+10.times do
     pm_list = PrivateMessage.create(recipient: User.all.sample, sender: User.all.sample, content: Faker::Hipster.paragraph(sentence_count: 4))
 end
 
