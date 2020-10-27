@@ -30,7 +30,7 @@ puts "10 tags créés"
 tp Tag.all
 
 30.times do
-    user_list = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 5), email: Faker::Internet.email, age: rand(10..99), city: City.all.sample)
+    user_list = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Movies::StarWars.quote, email: Faker::Internet.email, age: rand(10..99), city: City.all.sample)
 end
 
 puts "20 user créés"
@@ -38,7 +38,7 @@ puts "20 user créés"
 tp User.all
 
 10.times do
-    gossip_list = Gossip.create(title: Faker::ChuckNorris.fact, content: Faker::Lorem.sentence(word_count: 20), user: User.all.sample, tag: Tag.all.sample)
+    gossip_list = Gossip.create(title: Faker::Hipster.word, content: Faker::ChuckNorris.fact, user: User.all.sample, tag: Tag.all.sample)
 end
 
 puts "30 gossips"

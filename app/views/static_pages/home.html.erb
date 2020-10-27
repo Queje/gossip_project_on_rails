@@ -1,6 +1,10 @@
 <h1>Bienvenue sur The Gossip Project!</h1>
 <p>Messagerie et raggots à gogo pour tous les zozos!</p>
 
+<div>
+    <%= link_to "As tu un nouveau potin à raconter?", gossips_new_path %>
+</div>
+
 <div class="card-columns">
     <% Gossip.count.times do |i| %>
     

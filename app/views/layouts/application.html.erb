@@ -35,7 +35,14 @@
       </form>
     </div>
     </nav>
-  </header>
+    
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-success" role="alert">
+        <%= msg %>
+      </div>
+    <% end %>
+  
+    </header>
   
   <body>
     <%= yield %>
