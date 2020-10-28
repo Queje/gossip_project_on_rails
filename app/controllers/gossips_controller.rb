@@ -1,4 +1,13 @@
 class GossipsController < ApplicationController
+  def index
+    @gossip = Gossip.all
+  end
+
+  def show
+    @gossip = params[:id]
+    @gossip_id = Gossip.find(params[:id])
+  end
+  
   def new
     @post = Gossip.new
   end
@@ -9,14 +18,23 @@ class GossipsController < ApplicationController
 
     if @post.save
       puts "saved"
-      redirect_to root_path, notice: "potin sauvegardé!"
+      redirect_to gossips_path, notice: "potin sauvegardé!"
 
     else
       puts "erreur"
       puts @post.errors.messages
       render "new"
-    
     end
 
   end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end
