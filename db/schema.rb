@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_125101) do
     t.bigint "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 

@@ -16,8 +16,8 @@ class GossipsController < ApplicationController
 
   def create
 
-    @post = Gossip.new(title: params[:title], content: params[:content], user_id: 31, tag_id: 1)
-
+    @post = Gossip.new(title: params[:title], tag_id: params[:tag], content: params[:content])
+    @post.user = User.find_by(id: session[:user_id])
     if @post.save
       puts "saved"
       redirect_to gossips_path, notice: "potin sauvegardé!"

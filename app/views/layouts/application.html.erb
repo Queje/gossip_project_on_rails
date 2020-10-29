@@ -23,7 +23,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="<%=gossips_path %>">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<%=new_session_path %>">Log in<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%=new_user_path%>">Inscription</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%=team_path%>">Team</a>
@@ -31,6 +37,22 @@
         <li class="nav-item">
           <a class="nav-link" href="<%=contact_path%>">Contact</a>
         </li>
+
+        <li>
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+        </li>
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -38,7 +60,6 @@
       </form>
     </div>
     </nav>
-    
     <% flash.each do |type, msg| %>
       <div class="alert alert-success" role="alert">
         <%= msg %>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :gossips
-  resources :users, only: [:show]
+  resources :users, only: [:show, :new, :create]
   resources :cities, only: [:show]
+  resources :sessions, only: [:new, :create, :destroy]
   
   get 'welcome/:first_name', to: 'static_pages#welcome', as:'welcome'
   get '/team', to: 'static_pages#team'
