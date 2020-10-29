@@ -12,7 +12,4 @@ class StaticPagesController < ApplicationController
 
   end
 
-  def author
-    @author_info = Gossip.find(params[:author_info]).user
-  end
 end

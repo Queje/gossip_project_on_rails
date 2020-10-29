@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  
   def index
     @gossip = Gossip.all
   end
@@ -6,6 +7,7 @@ class GossipsController < ApplicationController
   def show
     @gossip = params[:id]
     @gossip_id = Gossip.find(params[:id])
+    @get_city_name = City.find(@gossip_id.user.city_id).name
   end
   
   def new
@@ -29,12 +31,24 @@ class GossipsController < ApplicationController
   end
 
   def edit
+    @gossip = params[:id]
+    @gossip_id = Gossip.find(params[:id])
   end
 
   def update
+    @gossip = Gossip.find(params[:id])
+    post_params = params.require(:gossip).permit(:title, :content)
+    if @gossip.update(post_params)
+      redirect_to gossips_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to gossips_path
   end
 
 end

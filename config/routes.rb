@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :gossips
-  
+  resources :users, only: [:show]
+  resources :cities, only: [:show]
   
   get 'welcome/:first_name', to: 'static_pages#welcome', as:'welcome'
   get '/team', to: 'static_pages#team'
