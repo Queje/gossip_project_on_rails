@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
 
   def destroy
     if session.delete(:user_id)
-      flash.now[:danger] = 'bye bye bitches'
+      flash[:danger] = 'bye bye bitches'
+      redirect_to gossips_path
     end
   end
 end

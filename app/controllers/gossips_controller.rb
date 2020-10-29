@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:show, :new, :create, :edit, :update, :destroy]
   
   def index
     @gossip = Gossip.all
@@ -31,24 +32,38 @@ class GossipsController < ApplicationController
   end
 
   def edit
-    @gossip = params[:id]
-    @gossip_id = Gossip.find(params[:id])
+    if good_user? == true
+      @gossip = params[:id]
+      @gossip_id = Gossip.find(params[:id])
+    end
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
-    post_params = params.require(:gossip).permit(:title, :content)
-    if @gossip.update(post_params)
-      redirect_to gossips_path
-    else
-      render 'new'
+    if good_user? == true
+      @gossip = Gossip.find(params[:id])
+      post_params = params.require(:gossip).permit(:title, :content)
+      if @gossip.update(post_params)
+        redirect_to gossips_path
+      else
+        render 'new'
+      end
     end
   end
 
   def destroy
-    @gossip = Gossip.find(params[:id])
-    @gossip.destroy
-    redirect_to gossips_path
+    if good_user? == true
+      @gossip = Gossip.find(params[:id])
+      @gossip.destroy
+      redirect_to gossips_path
+    end
   end
 
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
 end

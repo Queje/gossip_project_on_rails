@@ -11,8 +11,10 @@
             <p> ce potin a été crée le: <%=@gossip_id.created_at %> </p> </br>
             <p><U>Contenu du potin:</U> </p> </br>
             <p> <%=@gossip_id.content %> </p> </br>
+        <%if good_user? == true %>
             <%=link_to "Editer l'article", edit_gossip_path, class:"btn btn-success" %>
             <a href="<%=  gossip_path(@gossip) %>" class="btn btn-danger"  data-confirm="Etes-vous sur ?" data-method="DELETE"> Supprimer </a>
+        <%end%>
     </div>
 </div>    
     </br>
